@@ -29,10 +29,10 @@ kind: Service
 metadata:
   name: kuard
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
   - port: 8080
-    nodePort: 30000
+    targetPort: 8080
     protocol: TCP
   selector:
     app: kuard
@@ -42,7 +42,6 @@ kind: Ingress
 metadata:
   name: kuard
   annotations:
-    ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   ingressClassName: nginx
