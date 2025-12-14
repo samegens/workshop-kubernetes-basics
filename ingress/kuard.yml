@@ -14,15 +14,15 @@ spec:
         app: kuard
     spec:
       containers:
-      - name: kuard
-        image: gcr.io/kuar-demo/kuard-amd64:1
-        livenessProbe:
-          httpGet:
-            path: /healthy
-            port: 8080
-        ports:
-        - containerPort: 8080
-          protocol: TCP
+        - name: kuard
+          image: ongoonku/kuard-amd64:1
+          livenessProbe:
+            httpGet:
+              path: /healthy
+              port: 8080
+          ports:
+            - containerPort: 8080
+              protocol: TCP
 ---
 apiVersion: v1
 kind: Service
@@ -31,9 +31,9 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - port: 8080
-    targetPort: 8080
-    protocol: TCP
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
   selector:
     app: kuard
 ---
@@ -46,13 +46,13 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: kuard.local
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: kuard
-            port:
-              number: 8080
+    - host: kuard.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: kuard
+                port:
+                  number: 8080

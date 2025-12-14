@@ -8,4 +8,4 @@ metadata:
 spec:
   containers:
     - name: firstpod
-      image: gcr.io/kuar-demo/kuard-amd64:1
+      image: ongoonku/kuard-amd64:1

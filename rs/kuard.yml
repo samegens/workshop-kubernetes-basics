@@ -14,9 +14,9 @@ spec:
         app: kuard
     spec:
       containers:
-      - name: kuard
-        image: gcr.io/kuar-demo/kuard-amd64:1
-        livenessProbe:
-          httpGet:
-            path: /healthy
-            port: 8080
+        - name: kuard
+          image: ongoonku/kuard-amd64:1
+          livenessProbe:
+            httpGet:
+              path: /healthy
+              port: 8080
