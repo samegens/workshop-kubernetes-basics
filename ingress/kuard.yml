@@ -41,10 +41,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: kuard
-  annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
-  ingressClassName: nginx
+  # Change this to nginx when running minikube with the ingress addon.
+  ingressClassName: traefik
   rules:
     - host: kuard.local
       http:
